@@ -3,7 +3,7 @@ from accounts.models import AuthorizationCode
 
 def validate_authorization_code(code, client):
     try:
-        auth_code = AuthorizationCode.objects.get(code=code)
+        auth_code = AuthorizationCode.objects.filter(code=code).first()
     except AuthorizationCode.DoesNotExist:
         return None
 
